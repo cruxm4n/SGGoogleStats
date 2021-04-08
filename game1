@@ -1,0 +1,597 @@
+function game1Func() {
+    var inputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Input Sheet");
+    var outputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Game 1");
+    var key = "RGAPI-303596c6-9ce7-4c82-b884-0e6e0e8d0277"
+
+    var gameID1 = inputSheet.getRange("C5").getValue();
+    var patchID = inputSheet.getRange("E3").getValue();
+
+    var champions = UrlFetchApp.fetch("http://ddragon.leagueoflegends.com/cdn/" + patchID + "/data/en_US/champion.json")
+    championsData = JSON.parse(champions)
+    var match = UrlFetchApp.fetch("https://euw1.api.riotgames.com/lol/match/v4/matches/" + String(gameID1) + "?api_key=" + key)
+    var matchData = JSON.parse(match)
+    timeline = UrlFetchApp.fetch("https://euw1.api.riotgames.com/lol/match/v4/timelines/by-match/" + String(gameID1) + "?api_key=" + key)
+    timeline = JSON.parse(timeline)
+
+    var array1 = []
+    .map(function (el) {
+        return [el];
+    });
+    var array2 = []
+    .map(function (el) {
+        return [el];
+    });
+
+    outputSheet.getRange("A:B").clear();
+    array1.push(["TEAM 1"])
+    array2.push([""])
+    array1.push(["TEAM 2"])
+    array2.push([""])
+    array1.push([""])
+    array2.push([""])
+
+    array1.push(['-------------------------------------- TEAM 1 BANS --------------------------------------'])
+    array2.push([""])
+    try{
+    championId = matchData["teams"][0]["bans"][0]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][0]["bans"][1]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][0]["bans"][2]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][0]["bans"][3]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][0]["bans"][4]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    array1.push(['-------------------------------------- TEAM 2 BANS --------------------------------------'])
+    array2.push([""])
+    try{
+    championId = matchData["teams"][1]["bans"][0]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][1]["bans"][1]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][1]["bans"][2]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][1]["bans"][3]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    try{
+    championId = matchData["teams"][1]["bans"][4]["championId"]
+    for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if (championId > 0){
+        if (String(championNameData) == String(championId)){
+	      array1.push([championsData["data"][val]["id"]]);
+        array2.push([""])
+}}}} catch(err) {
+  array1.push("No Ban");
+  array2.push([""])
+}
+    array1.push(["."])
+    array2.push([""])
+    array1.push(["."])
+    array2.push([""])
+    array1.push(["."])
+    array2.push([""])
+
+    kills1 = 0
+    deaths1 = 0
+    assists1 = 0
+    team1Dmg = 0
+    team1Gold = 0
+    team1visionScore = 0
+    team1visionWards = 0
+    kills2 = 0
+    deaths2 = 0
+    assists2 = 0
+    team2Dmg = 0
+    team2Gold = 0
+    team2visionScore = 0
+    team2visionWards = 0
+ 
+    k = 0
+    while (k < 10){
+
+
+
+      if(matchData["participants"][k]["teamId"] == 100){
+          kills1 = kills1 + matchData["participants"][k]["stats"]["kills"]
+          deaths1 = deaths1 + matchData["participants"][k]["stats"]["deaths"]
+          assists1 = assists1 + matchData["participants"][k]["stats"]["assists"]
+          team1Dmg = team1Dmg + matchData["participants"][k]["stats"]["totalDamageDealtToChampions"]
+          team1Gold = team1Gold + matchData["participants"][k]["stats"]["goldEarned"]
+          team1visionScore = team1visionScore + matchData["participants"][k]["stats"]["visionScore"]
+          team1visionWards = team1visionWards + matchData["participants"][k]["stats"][
+              "visionWardsBoughtInGame"]}
+      else if(matchData["participants"][k]["teamId"] == 200){
+          kills2 = kills2 + matchData["participants"][k]["stats"]["kills"]
+          deaths2 = deaths2 + matchData["participants"][k]["stats"]["deaths"]
+          assists2 = assists2 + matchData["participants"][k]["stats"]["assists"]
+          team2Dmg = team2Dmg + matchData["participants"][k]["stats"]["totalDamageDealtToChampions"]
+          team2Gold = team2Gold + matchData["participants"][k]["stats"]["goldEarned"]
+          team2visionScore = team2visionScore + matchData["participants"][k]["stats"]["visionScore"]
+          team2visionWards = team2visionWards + matchData["participants"][k]["stats"][
+              "visionWardsBoughtInGame"]}
+      k++}
+
+    o = 0
+    while (o < 10) { 
+
+      var championId2 = matchData["participants"][o]["championId"]
+      var KA = matchData["participants"][o]["stats"]["kills"] +
+            matchData["participants"][o]["stats"]["assists"]       
+      array1.push(["-------------------------------------- IMPORTANT STATISTICS --------------------------------------"])
+      array2.push([""])
+      array1.push(["Games Played"])
+      array2.push(["1"])
+      array1.push(["Game Duration"])
+      array2.push([matchData["gameDuration"]])
+      for(var val in championsData["data"]) {
+      championNameData = championsData["data"][val]["key"]
+      if(String(championNameData) == String(championId2)) {
+        array1.push(["Champion"])
+        array2.push([String(championsData["data"][val]["id"])]);}
+      }
+      array1.push(["Kills"])
+      array2.push([String(matchData["participants"][o]["stats"]["kills"])])
+      array1.push(["Deaths"])
+      array2.push([String(matchData["participants"][o]["stats"]["deaths"])])
+      array1.push(["Assists"])
+      array2.push([String(matchData["participants"][o]["stats"]["assists"])])
+      array1.push(["-------------------------------------- IMPORTANT STATISTICS --------------------------------------"])
+      array2.push([""])
+      try{
+        if(matchData["participants"][o]["teamId"] == 100){
+          array1.push(["Kill Participation"]);
+          array2.push([(String((KA * 100) / kills1))])
+        } else if (matchData["participants"][o]["teamId"] == 200) {
+          array1.push(["Kill Participation"]);
+          array2.push([(String((KA * 100) / kills2))])
+        }
+      } catch(err) {
+          array1.push(["Kill participation:"])
+          array2.push(["0"])
+      }
+      array1.push(["Total creep score"])
+      array2.push([String(matchData["participants"][o]["stats"]["totalMinionsKilled"] +
+                                                matchData["participants"][o]["stats"][
+                                                    "neutralMinionsKilledTeamJungle"] +
+                                                matchData["participants"][o]["stats"][
+                                                    "neutralMinionsKilledEnemyJungle"])])
+      array1.push(["Total creep score per minute"])
+      array2.push([String(
+                  ((matchData["participants"][o]["stats"]["totalMinionsKilled"] +
+                    matchData["participants"][o]["stats"][
+                        "neutralMinionsKilledTeamJungle"] +
+                    matchData["participants"][o]["stats"][
+                        "neutralMinionsKilledEnemyJungle"]) / matchData[
+                        "gameDuration"]) * 60)])
+      
+      array1.push(["-------------------------------------- ADDITIONAL TEAM STATISTICS --------------------------------------"])
+      array2.push([""])
+      if(matchData["participants"][o]["teamId"] == 100){
+        array1.push(["Damage Participation"])
+        array2.push([String(matchData["participants"][o]["stats"][
+                            "totalDamageDealtToChampions"] * 100) / team1Dmg]);
+      } else if (matchData["participants"][o]["teamId"] == 200) {
+        array1.push(["Damage Participation"]);
+        array2.push([String((KA * 100) / kills2)])
+      }
+      if(matchData["participants"][o]["teamId"] == 100){
+        array1.push(["Gold Share"]);
+        array2.push([String(matchData["participants"][o]["stats"][
+                            "goldEarned"] * 100) / team2Dmg])
+      } else if (matchData["participants"][o]["teamId"] == 200) {
+        array1.push(["Gold Share"]);
+        array2.push([String(matchData["participants"][o]["stats"]["goldEarned"] * 100) / team1Gold])
+      }
+
+      array1.push(["-------------------------------------- COMBAT --------------------------------------"])
+      array2.push([""])
+      array1.push(["Largest Killing Spree"])
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["largestKillingSpree"])])
+      array1.push(["Largest Multi-Kill"])
+      array2.push([String(matchData["participants"][o]["stats"]["largestMultiKill"])])
+      array1.push(["Time CC'ing Enemies"])
+      array2.push([String(matchData["participants"][o]["stats"]["timeCCingOthers"])])
+      array1.push(["CC Score"])
+      array2.push([String(matchData["participants"][o]["stats"]["totalTimeCrowdControlDealt"])])
+
+      array1.push(["-------------------------------------- DAMAGE DEALT --------------------------------------"])
+      array2.push([""])
+      array1.push(["Champ Total Damage"])
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["totalDamageDealtToChampions"]))])
+      array1.push(["Champ Physical Damage"])
+      array2.push([String(
+                      (matchData["participants"][o]["stats"]["physicalDamageDealtToChampions"]))])
+      array1.push(["Champ Magic Damage"])
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["magicDamageDealtToChampions"]))])
+      array1.push(["Champ True Damage"])
+      array2.push([String(
+                      (matchData["participants"][o]["stats"]["trueDamageDealtToChampions"]))])
+      array1.push(["Damage"])
+      array2.push([String((matchData["participants"][o]["stats"]["totalDamageDealt"]))])
+      array1.push(["Physical Damage"]) 
+      array2.push([String((matchData["participants"][o]["stats"]["physicalDamageDealt"]))])
+      array1.push(["Magic Damage"])
+      array2.push([String((matchData["participants"][o]["stats"]["magicDamageDealt"]))])
+      array1.push(["True Damage"])
+      array2.push([String((matchData["participants"][o]["stats"]["trueDamageDealt"]))])
+      array1.push(["Largest Critical Strike"])
+      array2.push([String(
+                      (matchData["participants"][o]["stats"]["largestCriticalStrike"]))])
+      array1.push(["Total Objective Damage"])
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["damageDealtToObjectives"]))])
+      array1.push(["Total Turret Damage"])
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["damageDealtToTurrets"]))])
+
+      array1.push(["-------------------------------------- DAMAGE TAKEN AND HEALED --------------------------------------"])
+      array2.push([""])
+      array1.push(["Damage Healed"])
+      array2.push([String(matchData["participants"][o]["stats"]["totalHeal"])])
+      array1.push(["Damage Taken"])
+      array2.push([String(matchData["participants"][o]["stats"]["totalDamageTaken"])])
+      array1.push(["Physical Damage Taken"])
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["physicalDamageTaken"])])
+      array1.push(["Magic Damage Taken"])
+      array2.push([String(matchData["participants"][o]["stats"]["magicalDamageTaken"])])
+      array1.push(["True Damage Taken"])
+      array2.push([String(matchData["participants"][o]["stats"]["trueDamageTaken"])])
+      array1.push(["Self Mitigated Damage"])
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["damageSelfMitigated"])])
+
+      array1.push(["-------------------------------------- VISION --------------------------------------"])
+      array2.push([""])
+      array1.push(["Vision Score"])
+      array2.push([String(matchData["participants"][o]["stats"]["visionScore"])])
+      array1.push(["Wards Placed"])
+      array2.push([String(matchData["participants"][o]["stats"]["wardsPlaced"])])
+      array1.push(["Wards Destroyed"])
+      array2.push([String(matchData["participants"][o]["stats"]["wardsKilled"])])
+      array1.push(["Control Wards Purchased"])
+      array2.push([String(
+                      matchData["participants"][o]["stats"]["visionWardsBoughtInGame"])])
+
+      array1.push(["-------------------------------------- INCOME --------------------------------------"])
+      array2.push([""])
+      array1.push(["Gold Earned"])
+      array2.push([String(matchData["participants"][o]["stats"]["goldEarned"])])
+      array1.push(["Gold Spent"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["goldSpent"])])
+      array1.push(["Neutral Minions Killed Killed"]) 
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["neutralMinionsKilled"])])
+      array1.push(["Monsters Killed in Team Jungle"]) 
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["neutralMinionsKilledTeamJungle"])])
+      array1.push(["Monsters Killed in Enemy Jungle"]) 
+      array2.push([String(
+                  matchData["participants"][o]["stats"]["neutralMinionsKilledEnemyJungle"])])
+
+      array1.push(["-------------------------------------- MULTI-KILLS --------------------------------------"])
+      array2.push([""])
+      array1.push(["Double kills"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["doubleKills"])])
+      array1.push(["Triple kills"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["tripleKills"])])
+      array1.push(["Quadra kills"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["quadraKills"])])
+      array1.push(["Penta kills"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["pentaKills"])])
+
+      array1.push(["-------------------------------------- PER MINUTE STATS --------------------------------------"])
+      array2.push([""])
+      array1.push(["Kills per 10 min"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["kills"] / matchData["gameDuration"]) * 600)])
+      array1.push(["Deaths per 10 min"])
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["deaths"] / matchData["gameDuration"]) * 600)])
+      array1.push(["Assists per 10 min"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["assists"] / matchData["gameDuration"]) * 600)])
+      array1.push(["Damage/m"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["totalDamageDealt"] / matchData[
+                      "gameDuration"]) * 60)])
+      array1.push(["Champ Damage/m"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["totalDamageDealtToChampions"] / matchData[
+                      "gameDuration"]) * 60)])
+      array1.push(["Gold Earned/m"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["goldEarned"] / matchData["gameDuration"]) * 60)])
+      array1.push(["Vision Score/m"]) 
+      array2.push([String(
+                  (matchData["participants"][o]["stats"]["visionScore"] / matchData["gameDuration"]) * 60)])
+
+      array1.push(["----------------------------------- FIRST OBJECTIVES -----------------------------------"])
+      array2.push([""])
+      array1.push(["First Blood"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["firstBloodKill"])])
+      array1.push(["First Tower"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["firstTowerKill"])])
+      array1.push(["First Inhibitor"]) 
+      array2.push([String(matchData["participants"][o]["stats"]["firstInhibitorKill"])])
+
+      array1.push(['-------------------------------------- STATS @ 10 --------------------------------------'])
+      array2.push([""])
+      array1.push(["XP at 10"]) 
+      array2.push([String(timeline['frames'][10]['participantFrames'][o+1]["xp"])])
+      array1.push(["Gold at 10"]) 
+      array2.push([String(timeline['frames'][10]['participantFrames'][o+1]["totalGold"])])
+      array1.push(["CS at 10"]) 
+      array2.push([String(timeline['frames'][10]['participantFrames'][o+1]["minionsKilled"])])
+      array1.push(["Jungle CS at 10"]) 
+      array2.push([String(timeline['frames'][10]['participantFrames'][o+1]["jungleMinionsKilled"])])
+
+      array1.push(["-------------------------------------- STATS @15 --------------------------------------"])
+      array2.push([""])
+      array1.push(["XP at 15"]) 
+      array2.push([String(timeline['frames'][15]['participantFrames'][o+1]["xp"])])
+      array1.push(["Gold at 15"]) 
+      array2.push([String(timeline['frames'][15]['participantFrames'][o+1]["totalGold"])])
+      array1.push(["CS at 15"]) 
+      array2.push([String(timeline['frames'][15]['participantFrames'][o+1]["minionsKilled"])])
+      array1.push(["Jungle CS at 15"]) 
+      array2.push([String(timeline['frames'][15]['participantFrames'][o+1]["jungleMinionsKilled"])])
+
+      array1.push(["-------------------------------------- STATS @20 --------------------------------------"])
+      array2.push([""])
+      array1.push(["XP at 20"]) 
+      array2.push([String(timeline['frames'][20]['participantFrames'][o+1]["xp"])])
+      array1.push(["Gold at 20"]) 
+      array2.push([String(timeline['frames'][20]['participantFrames'][o+1]["totalGold"])])
+      array1.push(["CS at 20"]) 
+      array2.push([String(timeline['frames'][20]['participantFrames'][o+1]["minionsKilled"])])
+      array1.push(["Jungle CS at 20"]) 
+      array2.push([String(timeline['frames'][20]['participantFrames'][o+1]["jungleMinionsKilled"])])
+
+      array1.push(["."])
+      array2.push([""])
+      array1.push(["."])
+      array2.push([""])
+o++;}
+
+
+    array1.push(['------------------ TEAM 1 STATS ------------------'])
+    array2.push([""])
+    array1.push(["Games Played"])
+    array2.push(["1"])
+    array1.push(["Game Duration"]) 
+    array2.push([String(matchData["gameDuration"] / 60)])
+    array1.push(["First Blood"])
+    array2.push([String(matchData["teams"][0]["firstBlood"])])
+    array1.push(["First Rift Herald"])
+    array2.push([String(matchData["teams"][0]["firstRiftHerald"])])
+    array1.push(["First Dragon"]) 
+    array2.push([String(matchData["teams"][0]["firstDragon"])])
+    array1.push(["First Baron"]) 
+    array2.push([String(matchData["teams"][0]["firstBaron"])])
+    array1.push(["First Tower"]) 
+    array2.push([String(matchData["teams"][0]["firstTower"])])
+    array1.push(["First Inhibitor"]) 
+    array2.push([String(matchData["teams"][0]["firstInhibitor"])])
+    array1.push(["Dragon Kills"]) 
+    array2.push([String(matchData["teams"][0]["dragonKills"])])
+    array1.push(["Rift Herald Kills"]) 
+    array2.push([String(matchData["teams"][0]["riftHeraldKills"])])
+    array1.push(["Baron Kills"]) 
+    array2.push([String(matchData["teams"][0]["baronKills"])])
+    array1.push(["Tower Kills"]) 
+    array2.push([String(matchData["teams"][0]["towerKills"])])
+    array1.push(["Inhibitor Kills"]) 
+    array2.push([String(matchData["teams"][0]["inhibitorKills"])])
+
+    array1.push(['------------------ TEAM 1 DRAGONS ------------------'])
+    array2.push(["0"])
+    array1.push(["Mountain Dragons"])
+    array2.push(["0"])
+    array1.push(["Ocean Dragons"])
+    array2.push(["0"])
+    array1.push(["Cloud Dragons"])
+    array2.push(["0"])
+    array1.push(["Infernal Dragons"])
+    array2.push(["0"])
+    array1.push(["Elder Dragons"])
+    array2.push(["0"])
+    array1.push(["Soul Taken:"])
+    array2.push(["None"])
+
+    array1.push(["------------------ TEAM 1 PER MIN STATS ------------------"])
+    array2.push([""])
+    array1.push(["Kills"]) 
+    array2.push([String(kills1)])
+    array1.push(["Deaths"]) 
+    array2.push([String(deaths1)])
+    array1.push(["Assists"]) 
+    array2.push([String(assists1)])
+    array1.push(["Damage"]) 
+    array2.push([String(team1Dmg)])
+    array1.push(["Gold"]) 
+    array2.push([String(team1Gold)])
+    array1.push(["Vision Score"]) 
+    array2.push([String(team1visionScore)])
+    array1.push(["Vision Wards"]) 
+    array2.push([String(team1visionWards)])
+    array1.push(["."])
+    array2.push([""])
+
+    array1.push(["------------------ TEAM 2 STATS ------------------"])
+    array2.push([""])
+    array1.push(["Games Played:"])
+    array2.push(["1"])
+    array1.push(["Game Duration"]) 
+    array2.push([String(matchData["gameDuration"] / 60)])
+    array1.push(["First Blood"]) 
+    array2.push([String(matchData["teams"][1]["firstBlood"])])
+    array1.push(["First Rift Herald"]) 
+    array2.push([String(matchData["teams"][1]["firstRiftHerald"])])
+    array1.push(["First Dragon"]) 
+    array2.push([String(matchData["teams"][1]["firstDragon"])])
+    array1.push(["First Baron"]) 
+    array2.push([String(matchData["teams"][1]["firstBaron"])])
+    array1.push(["First Tower"]) 
+    array2.push([String(matchData["teams"][1]["firstTower"])])
+    array1.push(["First Inhibitor"]) 
+    array2.push([String(matchData["teams"][1]["firstInhibitor"])])
+    array1.push(["Dragon Kills"]) 
+    array2.push([String(matchData["teams"][1]["dragonKills"])])
+    array1.push(["Rift Herald Kills"]) 
+    array2.push([String(matchData["teams"][1]["riftHeraldKills"])])
+    array1.push(["Baron Kills"]) 
+    array2.push([String(matchData["teams"][1]["baronKills"])])
+    array1.push(["Tower Kills"]) 
+    array2.push([String(matchData["teams"][1]["towerKills"])])
+    array1.push(["Inhibitor Kills"]) 
+    array2.push([String(matchData["teams"][1]["inhibitorKills"])])
+
+    array1.push(["------------------ TEAM 2 DRAGONS ------------------"])
+    array2.push([""])
+    array1.push(["Mountain Dragons"]) 
+    array2.push(["0"])
+    array1.push(["Ocean Dragons"]) 
+    array2.push(["0"])
+    array1.push(["Cloud Dragons"]) 
+    array2.push(["0"])
+    array1.push(["Infernal Dragons"]) 
+    array2.push(["0"])
+    array1.push(["Elder Dragons"])
+    array2.push(["0"])
+    array1.push(["Soul Taken:"])
+    array2.push([""])
+
+    array1.push(["------------------ TEAM 2 PER MIN STATS ------------------"])
+    array2.push([""])
+    array1.push(["Kills"]) 
+    array2.push([String(kills2)])
+    array1.push(["Deaths"]) 
+    array2.push([String(deaths2)])
+    array1.push(["Assists"]) 
+    array2.push([String(assists2)])
+    array1.push(["Damage"]) 
+    array2.push([String(team2Dmg)])
+    array1.push(["Gold"]) 
+    array2.push([String(team2Gold)])
+    array1.push(["Vision Score"]) 
+    array2.push([String(team2visionScore)])
+    array1.push(["Vision Wards"]) 
+    array2.push([String(team2visionWards)])
+    array1.push(["."])
+    array2.push([""])
+
+    array1.push(["------------------- GLOBAL TEAM STATS -------------------"])
+    array2.push([""])
+    array1.push(["Rift Heralds Killed"]) 
+    array2.push([String(matchData["teams"][0]["riftHeraldKills"] + matchData["teams"][1]["riftHeraldKills"])])
+    array1.push(["Dragons Killed"]) 
+    array2.push([String(matchData["teams"][0]["dragonKills"] + matchData["teams"][1]["dragonKills"])])
+    array1.push(["Barons Killed"]) 
+    array2.push([String(matchData["teams"][0]["baronKills"] + matchData["teams"][1]["baronKills"])])
+    array1.push(["Towers Killed"]) 
+    array2.push([String(matchData["teams"][0]["towerKills"] + matchData["teams"][1]["towerKills"])])
+    array1.push(["Inhibitors Killed"]) 
+    array2.push([String(matchData["teams"][0]["inhibitorKills"] + matchData["teams"][1]["inhibitorKills"])])
+    array1.push(["."])
+    array2.push([""])
+
+    var range = outputSheet.getRange(1, 1, array1.length, 1)
+    range.setValues(array1)
+
+    var range = outputSheet.getRange(1, 2, array2.length, 1)
+    range.setValues(array2)
+}
