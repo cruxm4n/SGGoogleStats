@@ -1,7 +1,9 @@
 function game3Func() {
     var inputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Input Sheet");
     var outputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Game 3");
-    var key = "RGAPI-303596c6-9ce7-4c82-b884-0e6e0e8d0277"
+    var keySheet = SpreadsheetApp.openById("15gTOfZTphA3gRel8oVbBW8dli6e0LX1Wz22BbgDRx2Y");
+    var keySheet2 = keySheet.getSheetByName("Sheet2");
+    var key = keySheet2.getRange("A1").getValue();
 
     var gameID3 = inputSheet.getRange("I5").getValue();
     var patchID = inputSheet.getRange("E3").getValue();
