@@ -214,7 +214,11 @@ function game2Func() {
       array1.push(["Games Played"])
       array2.push(["1"])
       array1.push(["Game Duration"])
-      array2.push([matchData["gameDuration"]])
+      var timeOne = Math.floor(matchData["gameDuration"]/60)
+      var timeTwo = matchData["gameDuration"]%60;
+      var combiner = "."
+      var combined = timeOne + combiner + timeTwo
+      array2.push([String(combined)])
       for(var val in championsData["data"]) {
       championNameData = championsData["data"][val]["key"]
       if(String(championNameData) == String(championId2)) {
@@ -264,15 +268,15 @@ function game2Func() {
                             "totalDamageDealtToChampions"] * 100) / team1Dmg]);
       } else if (matchData["participants"][o]["teamId"] == 200) {
         array1.push(["Damage Participation"]);
-        array2.push([String((KA * 100) / kills2)])
+        array2.push([String(matchData["participants"][o]["stats"][
+                            "totalDamageDealtToChampions"] * 100) / team2Dmg]);
       }
       if(matchData["participants"][o]["teamId"] == 100){
         array1.push(["Gold Share"]);
-        array2.push([String(matchData["participants"][o]["stats"][
-                            "goldEarned"] * 100) / team2Dmg])
+        array2.push([String(matchData["participants"][o]["stats"]["goldEarned"] * 100) / team1Gold])
       } else if (matchData["participants"][o]["teamId"] == 200) {
         array1.push(["Gold Share"]);
-        array2.push([String(matchData["participants"][o]["stats"]["goldEarned"] * 100) / team1Gold])
+        array2.push([String(matchData["participants"][o]["stats"]["goldEarned"] * 100) / team2Gold])
       }
 
       array1.push(["-------------------------------------- COMBAT --------------------------------------"])
