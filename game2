@@ -43,7 +43,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -55,7 +55,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -67,7 +67,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -79,7 +79,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -91,7 +91,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     array1.push(['-------------------------------------- TEAM 2 BANS --------------------------------------'])
@@ -105,7 +105,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -117,7 +117,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -129,7 +129,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -141,7 +141,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     try{
@@ -153,7 +153,7 @@ function game2Func() {
 	      array1.push([championsData["data"][val]["id"]]);
         array2.push([""])
 }}}} catch(err) {
-  array1.push("No Ban");
+  array1.push(["No Ban"]);
   array2.push([""])
 }
     array1.push(["."])
@@ -412,7 +412,11 @@ function game2Func() {
       array1.push(["First Tower"]) 
       array2.push([String(matchData["participants"][o]["stats"]["firstTowerKill"])])
       array1.push(["First Inhibitor"]) 
+      try{
       array2.push([String(matchData["participants"][o]["stats"]["firstInhibitorKill"])])
+      } catch(err) {
+      array2.push(["False"])
+      }
 
       array1.push(['-------------------------------------- STATS @ 10 --------------------------------------'])
       array2.push([""])
